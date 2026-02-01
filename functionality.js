@@ -13,6 +13,7 @@ for (let i = 0; i < rows; i++) {
       fontSize: "14",
       fontColor: "#000",
       bgColor: "#fff",
+      value: "", // To store the cell's value
     };
     each_row.push(cell);
   }
