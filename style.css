@@ -191,7 +191,7 @@ body {
     height: calc(100% - 1.8rem);
     border-right-style: solid;
     border-right-color: #bcbbbb;
-    border-right-width: 1px;
+    border-right-width: 0.25px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,7 +210,7 @@ body {
     width: 100%;
     border-bottom-style: solid;
     border-bottom-color: #bcbbbb;
-    border-bottom-width: 100%;
+    border-bottom-width: 0.25px;
   }
 
   .address-columns {
@@ -218,7 +218,7 @@ body {
     width: calc(100% - 2rem);
     border-bottom-style: solid;
     border-bottom-color: #bcbbbb;
-    border-bottom-width: 1px;
+    border-bottom-width: 0.25px;
     display: flex;
     align-items: center;
   }
@@ -233,7 +233,7 @@ body {
     width: 120px;
     border-right-style: solid;
     border-right-color: #bcbbbb;
-    border-right-width: 100%;
+    border-right-width: 0.25px;
   }
 
   .grid {
@@ -258,10 +258,10 @@ body {
       width: 120px;
       border-right-style: solid;
       border-right-color: #e8e7e7;
-      border-right-width: 100%;
+      border-right-width: 0.25px;
       border-bottom-style: solid;
       border-bottom-color: #e8e7e7;
-      border-bottom-width: 100%;
+      border-bottom-width: 0.25px;
       outline: none;
     }
   }
