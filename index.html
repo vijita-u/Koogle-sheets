@@ -4,16 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Koogle Sheets</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols:opsz,wght,FILL,GRAD@24,300,0,0"
+    />
+    <title>Google Sheets</title>
   </head>
   <body>
     <div class="header">
       <div class="icon-container">
-        <img src="./public/icons8-google-48.png" alt="Google icon">
+        <img src="./public/icons8-google-48.png" alt="Google icon" />
       </div>
       <div class="file-container">
         <div class="file-name">
-            <input type="text" class="" placeholder="Untitled spreadsheet">
+          <input type="text" class="" placeholder="Untitled spreadsheet" />
         </div>
         <div class="file-options">
           <div class="file-action">Home</div>
@@ -24,11 +28,68 @@
         </div>
       </div>
     </div>
-    <div class="cell-actions"></div>
-    <div class="cell-address-bar"></div>
-    <div class="sheet-actions"></div>
-    <div class="cells-grid"></div>
-    <div class="sheets-container"></div>
+    <div class="cell-actions-container">
+      <div class="cell-actions">
+        <div class="ccp">
+          <span class="material-symbols"> content_copy </span>
+          <span class="material-symbols"> content_cut </span>
+          <span class="material-symbols"> content_paste </span>
+        </div>
+        <div class="text-actions">
+          <div class="font-change">
+            <select class="font-family" name="" id="">
+              <option value="monospace">Monospace</option>
+              <option value="arial">Arial</option>
+              <option value="time-new-roman">Times New Roman</option>
+            </select>
+            <select class="font-size">
+              <option value="12">12</option>
+              <option value="14">14</option>
+              <option value="16">16</option>
+              <option value="18">18</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+          <div class="font-styles">
+            <span class="material-symbols"> format_bold </span>
+            <span class="material-symbols"> format_italic </span>
+            <span class="material-symbols"> format_underlined </span>
+          </div>
+          <div class="text-format">
+            <span class="material-symbols"> format_align_left </span>
+            <span class="material-symbols"> align_center </span>
+            <span class="material-symbols"> format_align_right </span>
+          </div>
+          <div class="color-change">
+            <span class="material-symbols"> format_color_text </span>
+            <span class="material-symbols"> format_color_fill </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cell-address-bar">
+      <input type="text" readonly class="address-bar" />
+      <div class="formular-bar-container">
+        <span class="material-symbols"> function </span>
+        <input type="text" class="" formula-bar />
+      </div>
+    </div>
+    <div class="cells-grid">
+      <div class="top">
+        <div class="blank"></div>
+        <div class="address-columns"></div>
+      </div>
+      <div class="grid">
+        <div class="address-rows"></div>
+        <div class="cells"></div>
+      </div>
+    </div>
+    <div class="sheets-container">
+      <span class="material-symbols"> add </span>
+      <div class="sheets-folder">
+        <div class="sheet">Sheet1</div>
+      </div>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
