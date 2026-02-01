@@ -31,6 +31,9 @@ for (let i = 0; i < rows; i++) {
     cell.setAttribute("class", "grid-cell");
     // Make the cells editable
     cell.setAttribute("contenteditable", true);
+    cell.setAttribute("row_id", i);
+    cell.setAttribute("col_id", j);
+    cell.setAttribute("spellcheck", false);
     row.appendChild(cell);
     // Add event listener to update address bar on selection
     cell.addEventListener("click", (e) => {
@@ -41,3 +44,7 @@ for (let i = 0; i < rows; i++) {
   }
   cells_grid.appendChild(row);
 }
+
+// Set the first cell as the default - QuerySelector will give the first cell
+const first_cell = document.querySelector(".grid-cell");
+first_cell.click();

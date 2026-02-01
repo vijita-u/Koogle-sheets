@@ -37,7 +37,7 @@
         </div>
         <div class="text-actions">
           <div class="font-change">
-            <select class="font-family" name="" id="">
+            <select class="font-family" value="">
               <option value="monospace">Monospace</option>
               <option value="arial">Arial</option>
               <option value="time-new-roman">Times New Roman</option>
@@ -51,18 +51,24 @@
             </select>
           </div>
           <div class="font-styles">
-            <span class="material-symbols"> format_bold </span>
-            <span class="material-symbols"> format_italic </span>
-            <span class="material-symbols"> format_underlined </span>
+            <span class="material-symbols bold"> format_bold </span>
+            <span class="material-symbols italic"> format_italic </span>
+            <span class="material-symbols underlined"> format_underlined </span>
           </div>
           <div class="text-format">
-            <span class="material-symbols"> format_align_left </span>
-            <span class="material-symbols"> align_center </span>
-            <span class="material-symbols"> format_align_right </span>
+            <span class="left material-symbols"> format_align_left </span>
+            <span class="center material-symbols"> align_center </span>
+            <span class="right material-symbols"> format_align_right </span>
           </div>
           <div class="color-change">
-            <span class="material-symbols"> format_color_text </span>
-            <span class="material-symbols"> format_color_fill </span>
+            <label>
+              <span class="material-symbols"> format_color_text </span>
+              <input type="color" class="font-color" />
+            </label>
+            <label>
+              <span class="material-symbols"> format_color_fill </span>
+              <input type="color" class="fill-color" />
+            </label>
           </div>
         </div>
       </div>
@@ -90,6 +96,7 @@
         <div class="sheet">Sheet1</div>
       </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="./ui.js"></script>
+    <script src="./functionality.js"></script>
   </body>
 </html>
