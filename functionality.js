@@ -2,7 +2,7 @@
 // Each cell will be a JS object containing the cell properties
 let storage = [];
 for (let i = 0; i < rows; i++) {
-  each_row = [];
+  eachRow = [];
   for (let j = 0; j < cols; j++) {
     let cell = {
       bold: false,
@@ -14,13 +14,15 @@ for (let i = 0; i < rows; i++) {
       fontColor: "#000",
       bgColor: "#fff",
       value: "", // To store the cell's value
+      formula: "", // Store the formula
+      children: [],
     };
-    each_row.push(cell);
+    eachRow.push(cell);
   }
-  storage.push(each_row);
+  storage.push(eachRow);
 }
 
-// Selectors for cell properites
+// Selectors for cell properties
 let bold = document.querySelector(".bold");
 let italic = document.querySelector(".italic");
 let underlined = document.querySelector(".underlined");
@@ -37,111 +39,111 @@ let activeBtnText = "#041e49";
 let inactiveBg = "#f0f4f9";
 
 // Access the cell address
-const address_bar = document.querySelector(".address-bar");
+const addressBar = document.querySelector(".address-bar");
 
 // Attach listeners to properties
 bold.addEventListener("click", (e) => {
-  let [row, column] = decodeAddress(address_bar.value);
+  let [row, column] = decodeAddress(addressBar.value);
   // Access the cell and its properties from storage
   let cell = document.querySelector(
     `.grid-cell[row_id="${row}"][col_id="${column}"]`,
   );
-  let cell_prop = storage[row][column];
+  let cellProp = storage[row][column];
 
-  cell_prop.bold = !cell_prop.bold;
-  cell.style.fontWeight = cell_prop.bold ? "bold" : "normal";
-  bold.style.backgroundColor = cell_prop.bold ? activeBtnBg : inactiveBg;
-  bold.style.color = cell_prop.bold ? activeBtnText : "#000";
+  cellProp.bold = !cellProp.bold;
+  cell.style.fontWeight = cellProp.bold ? "bold" : "normal";
+  bold.style.backgroundColor = cellProp.bold ? activeBtnBg : inactiveBg;
+  bold.style.color = cellProp.bold ? activeBtnText : "#000";
 });
 
 italic.addEventListener("click", (e) => {
-  let [row, column] = decodeAddress(address_bar.value);
+  let [row, column] = decodeAddress(addressBar.value);
   // Access the cell and its properties from storage
   let cell = document.querySelector(
     `.grid-cell[row_id="${row}"][col_id="${column}"]`,
   );
-  let cell_prop = storage[row][column];
+  let cellProp = storage[row][column];
 
-  cell_prop.italic = !cell_prop.italic;
-  cell.style.fontStyle = cell_prop.italic ? "italic" : "normal";
-  italic.style.backgroundColor = cell_prop.italic ? activeBtnBg : inactiveBg;
-  italic.style.color = cell_prop.italic ? activeBtnText : "#000";
+  cellProp.italic = !cellProp.italic;
+  cell.style.fontStyle = cellProp.italic ? "italic" : "normal";
+  italic.style.backgroundColor = cellProp.italic ? activeBtnBg : inactiveBg;
+  italic.style.color = cellProp.italic ? activeBtnText : "#000";
 });
 
 underlined.addEventListener("click", (e) => {
-  let [row, column] = decodeAddress(address_bar.value);
+  let [row, column] = decodeAddress(addressBar.value);
   // Access the cell and its properties from storage
   let cell = document.querySelector(
     `.grid-cell[row_id="${row}"][col_id="${column}"]`,
   );
-  let cell_prop = storage[row][column];
+  let cellProp = storage[row][column];
 
-  cell_prop.underline = !cell_prop.underline;
-  cell.style.textDecoration = cell_prop.underline ? "underline" : "none";
-  underlined.style.backgroundColor = cell_prop.underline
+  cellProp.underline = !cellProp.underline;
+  cell.style.textDecoration = cellProp.underline ? "underline" : "none";
+  underlined.style.backgroundColor = cellProp.underline
     ? activeBtnBg
     : inactiveBg;
-  underlined.style.color = cell_prop.underline ? activeBtnText : "#000";
+  underlined.style.color = cellProp.underline ? activeBtnText : "#000";
 });
 
 fontSize.addEventListener("change", (e) => {
-  let [row, column] = decodeAddress(address_bar.value);
+  let [row, column] = decodeAddress(addressBar.value);
   // Access the cell and its properties from storage
   let cell = document.querySelector(
     `.grid-cell[row_id="${row}"][col_id="${column}"]`,
   );
-  let cell_prop = storage[row][column];
+  let cellProp = storage[row][column];
 
-  cell_prop.fontSize = fontSize.value;
-  cell.style.fontSize = cell_prop.fontSize + "px";
-  fontSize.value = cell_prop.fontSize;
+  cellProp.fontSize = fontSize.value;
+  cell.style.fontSize = cellProp.fontSize + "px";
+  fontSize.value = cellProp.fontSize;
 });
 
 fontFamily.addEventListener("change", (e) => {
-  let [row, column] = decodeAddress(address_bar.value);
+  let [row, column] = decodeAddress(addressBar.value);
   // Access the cell and its properties from storage
   let cell = document.querySelector(
     `.grid-cell[row_id="${row}"][col_id="${column}"]`,
   );
-  let cell_prop = storage[row][column];
+  let cellProp = storage[row][column];
 
-  cell_prop.fontFamily = fontFamily.value;
-  cell.style.fontFamily = cell_prop.fontFamily;
-  fontFamily.value = cell_prop.fontFamily;
+  cellProp.fontFamily = fontFamily.value;
+  cell.style.fontFamily = cellProp.fontFamily;
+  fontFamily.value = cellProp.fontFamily;
 });
 
 fontColor.addEventListener("change", (e) => {
-  let [row, column] = decodeAddress(address_bar.value);
+  let [row, column] = decodeAddress(addressBar.value);
   // Access the cell and its properties from storage
   let cell = document.querySelector(
     `.grid-cell[row_id="${row}"][col_id="${column}"]`,
   );
-  let cell_prop = storage[row][column];
-  cell_prop.fontColor = fontColor.value;
-  cell.style.color = cell_prop.fontColor;
-  fontColor.value = cell_prop.fontColor;
+  let cellProp = storage[row][column];
+  cellProp.fontColor = fontColor.value;
+  cell.style.color = cellProp.fontColor;
+  fontColor.value = cellProp.fontColor;
 });
 
 bgColor.addEventListener("change", (e) => {
-  let [row, column] = decodeAddress(address_bar.value);
+  let [row, column] = decodeAddress(addressBar.value);
   // Access the cell and its properties from storage
   let cell = document.querySelector(
     `.grid-cell[row_id="${row}"][col_id="${column}"]`,
   );
-  let cell_prop = storage[row][column];
-  cell_prop.bgColor = bgColor.value;
-  cell.style.backgroundColor = cell_prop.bgColor;
-  bgColor.value = cell_prop.bgColor;
+  let cellProp = storage[row][column];
+  cellProp.bgColor = bgColor.value;
+  cell.style.backgroundColor = cellProp.bgColor;
+  bgColor.value = cellProp.bgColor;
 });
 
 leftAlign.addEventListener("click", (e) => {
-  let [row, column] = decodeAddress(address_bar.value);
+  let [row, column] = decodeAddress(addressBar.value);
   let cell = document.querySelector(
     `.grid-cell[row_id="${row}"][col_id="${column}"]`,
   );
-  let cell_prop = storage[row][column];
+  let cellProp = storage[row][column];
 
-  cell_prop.alignment = "left";
+  cellProp.alignment = "left";
   cell.style.textAlign = "left";
   leftAlign.style.backgroundColor = activeBtnBg;
   centerAlign.style.backgroundColor = inactiveBg;
@@ -149,13 +151,13 @@ leftAlign.addEventListener("click", (e) => {
 });
 
 centerAlign.addEventListener("click", (e) => {
-  let [row, column] = decodeAddress(address_bar.value);
+  let [row, column] = decodeAddress(addressBar.value);
   let cell = document.querySelector(
     `.grid-cell[row_id="${row}"][col_id="${column}"]`,
   );
-  let cell_prop = storage[row][column];
+  let cellProp = storage[row][column];
 
-  cell_prop.alignment = "center";
+  cellProp.alignment = "center";
   cell.style.textAlign = "center";
   leftAlign.style.backgroundColor = inactiveBg;
   centerAlign.style.backgroundColor = activeBtnBg;
@@ -163,13 +165,13 @@ centerAlign.addEventListener("click", (e) => {
 });
 
 rightAlign.addEventListener("click", (e) => {
-  let [row, column] = decodeAddress(address_bar.value);
+  let [row, column] = decodeAddress(addressBar.value);
   let cell = document.querySelector(
     `.grid-cell[row_id="${row}"][col_id="${column}"]`,
   );
-  let cell_prop = storage[row][column];
+  let cellProp = storage[row][column];
 
-  cell_prop.alignment = "right";
+  cellProp.alignment = "right";
   cell.style.textAlign = "right";
   leftAlign.style.backgroundColor = inactiveBg;
   centerAlign.style.backgroundColor = inactiveBg;
@@ -182,35 +184,35 @@ rightAlign.addEventListener("click", (e) => {
  */
 const mapToProp = (cell) => {
   cell.addEventListener("click", (e) => {
-    let [row, column] = decodeAddress(address_bar.value);
+    let [row, column] = decodeAddress(addressBar.value);
     let cell = document.querySelector(
       `.grid-cell[row_id="${row}"][col_id="${column}"]`,
     );
-    let cell_prop = storage[row][column];
+    let cellProp = storage[row][column];
 
     // Apply all the cell's properties
-    cell.style.fontWeight = cell_prop.bold ? "bold" : "normal";
-    cell.style.fontStyle = cell_prop.italic ? "italic" : "normal";
-    cell.style.textDecoration = cell_prop.underline ? "underline" : "none";
-    cell.style.fontSize = cell_prop.fontSize + "px";
-    cell.style.fontFamily = cell_prop.fontFamily;
-    cell.style.color = cell_prop.fontColor;
-    cell.style.backgroundColor = cell_prop.bgColor;
+    cell.style.fontWeight = cellProp.bold ? "bold" : "normal";
+    cell.style.fontStyle = cellProp.italic ? "italic" : "normal";
+    cell.style.textDecoration = cellProp.underline ? "underline" : "none";
+    cell.style.fontSize = cellProp.fontSize + "px";
+    cell.style.fontFamily = cellProp.fontFamily;
+    cell.style.color = cellProp.fontColor;
+    cell.style.backgroundColor = cellProp.bgColor;
 
     // Apply properties to icons
-    bold.style.backgroundColor = cell_prop.bold ? activeBtnBg : inactiveBg;
-    bold.style.color = cell_prop.bold ? activeBtnText : "#000";
-    italic.style.backgroundColor = cell_prop.italic ? activeBtnBg : inactiveBg;
-    italic.style.color = cell_prop.italic ? activeBtnText : "#000";
-    underlined.style.backgroundColor = cell_prop.underline
+    bold.style.backgroundColor = cellProp.bold ? activeBtnBg : inactiveBg;
+    bold.style.color = cellProp.bold ? activeBtnText : "#000";
+    italic.style.backgroundColor = cellProp.italic ? activeBtnBg : inactiveBg;
+    italic.style.color = cellProp.italic ? activeBtnText : "#000";
+    underlined.style.backgroundColor = cellProp.underline
       ? activeBtnBg
       : inactiveBg;
-    fontColor.value = cell_prop.fontColor;
-    bgColor.value = cell_prop.bgColor;
-    fontSize.value = cell_prop.fontSize;
-    fontFamily.value = cell_prop.fontFamily;
+    fontColor.value = cellProp.fontColor;
+    bgColor.value = cellProp.bgColor;
+    fontSize.value = cellProp.fontSize;
+    fontFamily.value = cellProp.fontFamily;
 
-    switch (cell_prop.alignment) {
+    switch (cellProp.alignment) {
       case "left":
         leftAlign.style.backgroundColor = activeBtnBg;
         centerAlign.style.backgroundColor = inactiveBg;
@@ -227,13 +229,19 @@ const mapToProp = (cell) => {
         rightAlign.style.backgroundColor = activeBtnBg;
         break;
     }
+
+    // Update formula bar
+    let formulaBar = document.querySelector(".formula-bar");
+    formulaBar.value = cellProp.formula;
+    // Update cell value
+    cell.value = cellProp.value;
   });
 };
 
 // Map cells to their current property state
-let cells = document.querySelectorAll(".grid-cell");
-for (let i = 0; i < cells.length; i++) {
-  mapToProp(cells[i]);
+let cellsCollection = document.querySelectorAll(".grid-cell");
+for (let i = 0; i < cellsCollection.length; i++) {
+  mapToProp(cellsCollection[i]);
 }
 
 /**
