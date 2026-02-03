@@ -38,11 +38,18 @@ formulaBar.addEventListener("keydown", (e) => {
     // Check for change in formula
     let address = addressBar.value;
     let [row, column] = decodeAddress(address);
-    let cell = document.querySelector(
-      `.grid-cell[row_id="${row}"][col_id="${column}"]`,
-    );
     let cellProp = storage[row][column];
     if (formula !== cellProp.formula) removeChild(cellProp.formula);
+
+    // Add edges for the new formula, then validate for cycles. If cyclic, revert.
+    addChildToParentCell(formula);
+    if (isCyclic(graph)) {
+      console.log("Cycle detected");
+      // Revert added edges
+      removeChild(formula);
+      console.log("Removed added parent-child relationship");
+      return;
+    }
 
     updateUIAndStorage(evaluatedVal, formula, address);
     addChildToParentCell(formula);
@@ -103,6 +110,9 @@ const addChildToParentCell = (formula) => {
       let [row, column] = decodeAddress(encodedFormula[i]);
       let ParentCellProp = storage[row][column];
       ParentCellProp.children.push(childAddress);
+
+      // Add this dependency to the 2D Matrix also
+      graph[row][column].push(decodeAddress(childAddress));
     }
   }
 };
