@@ -1,26 +1,36 @@
+// Holds all the sheets
+let allSheetsContainer = [];
+
 // Store the entire grid as a 2D Matrix
 // Each cell will be a JS object containing the cell properties
 let storage = [];
-for (let i = 0; i < rows; i++) {
-  eachRow = [];
-  for (let j = 0; j < cols; j++) {
-    let cell = {
-      bold: false,
-      italic: false,
-      underline: false,
-      alignment: "left",
-      fontFamily: "monospace",
-      fontSize: "14",
-      fontColor: "#000",
-      bgColor: "#fff",
-      value: "", // To store the cell's value
-      formula: "", // Store the formula
-      children: [],
-    };
-    eachRow.push(cell);
-  }
-  storage.push(eachRow);
+
+{
+  // Create one sheet by default
+  let addSheetIcon = document.querySelector(".add-sheet");
+  addSheetIcon.click();
 }
+
+// for (let i = 0; i < rows; i++) {
+//   eachRow = [];
+//   for (let j = 0; j < cols; j++) {
+//     let cell = {
+//       bold: false,
+//       italic: false,
+//       underline: false,
+//       alignment: "left",
+//       fontFamily: "monospace",
+//       fontSize: "14",
+//       fontColor: "#000",
+//       bgColor: "#fff",
+//       value: "", // To store the cell's value
+//       formula: "", // Store the formula
+//       children: [],
+//     };
+//     eachRow.push(cell);
+//   }
+//   storage.push(eachRow);
+// }
 
 // Selectors for cell properties
 let bold = document.querySelector(".bold");

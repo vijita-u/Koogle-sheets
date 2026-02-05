@@ -268,27 +268,33 @@ body {
 }
 
 .sheets-container {
-  height: 3rem;
+  height: 2.5rem;
   background-color: #fafbfd;
   display: flex;
   align-items: center;
   gap: 20px;
   margin-left: 50px;
+  overflow: auto;
+}
+
+.add-sheet {
+  cursor: pointer;
 }
 
 .sheets-folder {
-  height: 100%;
+  height: 2.5rem;
 }
 
 .sheet {
-  background-color: #e1e9f7;
+  /* background-color: #e1e9f7; */
   font-weight: 550;
-  height: 100%;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   padding-inline: 20px;
-  color: #0957d0;
+  /* color: #0957d0; */
   font-size: 14px;
+  cursor: pointer;
 }
 
 .color-change input {

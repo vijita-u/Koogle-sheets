@@ -1,16 +1,18 @@
+let graphsContainer = [];
+
 // Store the graph as a 2D Matrix
 // Each cell represents a node
 // Each node is an array of its dependencies in the form [rowID, colID]
 
 // Create graph DS
 let graph = [];
-for (let i = 0; i < rows; i++) {
-  let row = [];
-  for (let j = 0; j < cols; j++) {
-    row.push([]);
-  }
-  graph.push(row);
-}
+// for (let i = 0; i < rows; i++) {
+//   let row = [];
+//   for (let j = 0; j < cols; j++) {
+//     row.push([]);
+//   }
+//   graph.push(row);
+// }
 
 /**
  * Detects cycle in the graph

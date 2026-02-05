@@ -44,7 +44,3 @@ for (let i = 0; i < rows; i++) {
   }
   cellsGrid.appendChild(row);
 }
-
-// Set the first cell as the default - QuerySelector will give the first cell
-const firstCell = document.querySelector(".grid-cell");
-firstCell.click();
