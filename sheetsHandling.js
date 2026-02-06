@@ -107,16 +107,19 @@ const activateSheet = (sheet) => {
     // Access this particular sheet's database from the collection
     accessSheet(sheetID);
     activateSheetProperties();
-    // Update UI - Get all current sheets and remove colors from all
-    let currentSheets = document.querySelectorAll(".sheet-folder");
-    for (let i = 0; i < currentSheets.length; i++) {
-      currentSheets[i].style.backgroundColor = "transparent";
-      currentSheets[i].style.color = "#000";
-    }
-    // Add activation color to the activated sheet
-    sheet.style.backgroundColor = "#e1e9f7";
-    sheet.style.color = "#0957d0";
+    activateSheetOnUI(sheet);
   });
+};
+
+const activateSheetOnUI = (sheet) => {
+  let currentSheets = document.querySelectorAll(".sheet-folder");
+  for (let i = 0; i < currentSheets.length; i++) {
+    currentSheets[i].style.backgroundColor = "transparent";
+    currentSheets[i].style.color = "#000";
+  }
+  // Add activation color to the activated sheet
+  sheet.style.backgroundColor = "#e1e9f7";
+  sheet.style.color = "#0957d0";
 };
 
 const handleRemoveSheet = (sheet) => {
@@ -124,7 +127,7 @@ const handleRemoveSheet = (sheet) => {
     // 0 - left, 1 - scroll, 2 - right
     if (e.button !== 2) return;
     let currentSheets = document.querySelectorAll(".sheet-folder");
-    if (currentSheets.length == 1) {
+    if (currentSheets.length === 1) {
       return;
     }
     // Access sheet's ID
@@ -134,11 +137,24 @@ const handleRemoveSheet = (sheet) => {
     // Delete databases
     allSheetsContainer.splice(sheetID, 1);
     graphsContainer.splice(sheetID, 1);
-    // Remove sheet from UI
-    sheet.remove();
-    // Activate previous sheet by default
-    allSheetsContainer[0];
-    graphsContainer[0];
-    activateSheet(allSheetsContainer[0]);
+    handleRemoveSheetOnUI(sheet);
+    accessSheet(0);
+    activateSheetProperties();
   });
+};
+
+const handleRemoveSheetOnUI = (sheet) => {
+  // Remove sheet from UI
+  sheet.remove();
+  // Fix sheetIDs of all remaining sheets
+  currentSheets = document.querySelectorAll(".sheet-folder");
+  for (let i = 0; i < currentSheets.length; i++) {
+    currentSheets[i].setAttribute("id", i);
+    let sheet = currentSheets[i].querySelector(".sheet");
+    sheet.innerText = `Sheet${i + 1}`;
+    currentSheets[i].style.backgroundColor = "transparent";
+    currentSheets[i].style.color = "#000";
+  }
+  currentSheets[0].style.backgroundColor = "#e1e9f7";
+  currentSheets[0].style.color = "#0957d0";
 };

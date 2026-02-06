@@ -6,13 +6,6 @@ let graphsContainer = [];
 
 // Create graph DS
 let graph = [];
-// for (let i = 0; i < rows; i++) {
-//   let row = [];
-//   for (let j = 0; j < cols; j++) {
-//     row.push([]);
-//   }
-//   graph.push(row);
-// }
 
 /**
  * Detects cycle in the graph
