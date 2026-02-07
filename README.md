@@ -37,15 +37,15 @@ Tip: If the formatting icons (like the Google icon or toolbar icons) don’t sho
 
 '''
 Google-sheets/
-├── public/
-│   ├── index.html        # Main HTML file for the spreadsheet UI
-│   ├── style.css         # CSS styling for the UI, making it look like Google Sheets
-│   └── icons8-google-48.png  # Icon image used in the header (Google logo)
-├── functionality.js      # Handles cell formatting toolbar logic and cell selection
-├── formula.js            # Handles formula input, evaluation, and dependency management
-├── cycleValidation.js    # Implements cycle detection in the formula dependency graph
-├── sheetsHandling.js     # Manages adding/removing sheets and switching between them
-└── README.md             # Project documentation
+    public/
+    index.html        # Main HTML file for the spreadsheet UI
+    style.css         # CSS styling for the UI, making it look like Google Sheets
+    icons8-google-48.png  # Icon image used in the header (Google logo)
+    functionality.js      # Handles cell formatting toolbar logic and cell selection
+    formula.js            # Handles formula input, evaluation, and dependency management
+    cycleValidation.js    # Implements cycle detection in the formula dependency graph
+    sheetsHandling.js     # Manages adding/removing sheets and switching between them
+    README.md             # Project documentation
 '''
 
 ## Future Improvements
